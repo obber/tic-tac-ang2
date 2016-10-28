@@ -1,0 +1,26 @@
+@import '../shared/styles/variables';
+
+.nav-container {
+  background-color: $prim;
+  color: $white;
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline;
+  }
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $prim-l2;
+  }
+
+  .active {
+    color: $prim-l2;
+  }
+}
