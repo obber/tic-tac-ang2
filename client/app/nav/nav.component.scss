@@ -1,26 +1,68 @@
 @import '../shared/styles/variables';
 
+.logo h1 {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 46px;
+  margin: 22px 0;
+}
+
 .nav-container {
   background-color: $prim;
   color: $white;
 
+  nav {
+    position: relative;
+    top: 35px;
+  }
+
   ul {
+    margin: 0;
     list-style: none;
+    text-align: right;
   }
 
   li {
     display: inline;
+    margin-right: 20px;
+    font-size: 16px;
   }
 
   a {
     color: $white;
+    text-decoration: none;
   }
 
-  a:hover {
+  a:hover,
+  a:active {
     color: $prim-l2;
+    text-decoration: none;
   }
 
   .active {
     color: $prim-l2;
   }
+}
+
+.play-button {
+  display: inline;
+  margin-right: 0;
+  padding: 15px;
+  background-color: $accent;
+  color: $white;
+  border-radius: 3px;
+  border-bottom: 3px solid $accent-d1;
+  text-shadow: 0 1px 0 $accent-d1;
+  cursor: pointer;
+  position: relative;
+}
+
+.play-button:hover {
+  background-color: $accent-l1;
+}
+
+.play-button:active {
+  background-color: $accent-d1;
+  border-bottom: 0;
+  border-top: 3px solid $accent-d2;
+  top: 3px;
 }

@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { GameModule } from './game-module/game.module';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
