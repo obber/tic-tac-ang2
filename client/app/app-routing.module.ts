@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    redirectTo: ''
+    component: HomeComponent
   },
   {
     path: 'tutorial',

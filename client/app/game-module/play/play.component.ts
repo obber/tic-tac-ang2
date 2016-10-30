@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-play',
   styleUrls: ['./play.component.scss'],
   template: `
-    <p>
-      play works!
-    </p>
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Game Component</h1>
+    </div>
   `
 })
 export class PlayComponent implements OnInit {

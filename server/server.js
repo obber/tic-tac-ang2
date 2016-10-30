@@ -17,10 +17,10 @@ app.get('/api/hello', (req, res) => {
 server.listen(port);
 console.log(`backend server listening on port: ${port}`);
 
-io.on('connection', function (socket) {
-  console.log('socket connected');
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
+const queue = io.of('/queue');
+queue.on('connection', socket => {
+  console.log('socket connected to queue');
+  socket.on('disconnect', () => {
+    console.log('socket disconnected from queue');
+  })
 });
