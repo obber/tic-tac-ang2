@@ -82,6 +82,10 @@
   dependencies:
     tsickle "^0.1.7"
 
+"@ngrx/store@ngrx/store":
+  version "2.2.1"
+  resolved "https://codeload.github.com/ngrx/store/tar.gz/da6b6cb6270fc34034cae07e9de7272ab3a0e483"
+
 "@ngtools/webpack@latest":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.1.2.tgz#a27a77430ad2fbd1dda59de790ce9770e3fd2298"
@@ -5532,11 +5536,6 @@ negotiator@0.4.9:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
-
-ngrx/store:
-  name "@ngrx/store"
-  version "2.2.1"
-  resolved "https://codeload.github.com/ngrx/store/tar.gz/da6b6cb6270fc34034cae07e9de7272ab3a0e483"
 
 no-case@^2.2.0:
   version "2.3.0"

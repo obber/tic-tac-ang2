@@ -22,6 +22,7 @@ export class SocketService {
     if (this.name === 'queue') {
       return Observable.create((observer: any) => {
         this.socket.on('found', (payload: any) => observer.next({ action: 'found', payload: payload }));
+        this.socket.on('server ready', (payload: any) => observer.next({ action: 'server ready', payload: payload }));
         return () => {
           console.log('closing');
           this.socket.close();
@@ -31,6 +32,9 @@ export class SocketService {
     // game socket observable
     } else if (this.name === 'game') {
       return Observable.create((observer: any) => {
+        this.socket.on('start', (payload: any) => observer.next({ action: 'server ready', payload: payload }));
+        this.socket.on('server turn over', (payload: any) => observer.next({ action: 'server turn over', payload: payload }));
+        this.socket.on('game over', (payload: any) => observer.next({ action: 'server ready', payload: payload }));
         return () => this.socket.close();
       });
     }

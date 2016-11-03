@@ -23,9 +23,6 @@ export default class Game {
       // initialize the game by sending the first board state
       this.start();
     });
-
-    // listen for all game relevant signals
-    // emit a game start signal to room with board state
   }
 
   start() {
@@ -48,7 +45,9 @@ export default class Game {
       }
     });
 
-    this.emit('start');
+    this.emit('start', {
+      board: this.logic.board
+    });
   }
 
   emit(event, payload) {
@@ -58,7 +57,7 @@ export default class Game {
 
   listen(event, cb) {
     // we bind 1 and 2 as the first argument for our cb to give access to which client made the emission
-    this.player1.socket.listen(event, cb.bind(null, 1));
-    this.player2.socket.listen(event, cb.bind(null, 2));
+    this.player1.socket.on(event, cb.bind(null, 1));
+    this.player2.socket.on(event, cb.bind(null, 2));
   }
 }

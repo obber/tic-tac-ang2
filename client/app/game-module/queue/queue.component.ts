@@ -21,7 +21,9 @@ export class QueueComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.socket = this.socketService.get('queue');
-    this.sub = this.socket.subscribe(resp => console.log(resp));
+    this.sub = this.socket.subscribe(resp => {
+
+    });
   }
 
   ngOnDestroy() {
