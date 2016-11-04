@@ -16,11 +16,13 @@ export default class Game {
     const start = false;
 
     // after server ready, client should change view and emit 'client ready'
-    this.emit('server ready');
+    setTimeout(() => {
+      this.emit('server ready');
+    }, 2000);
 
     // listen for a client ready signal
     this.listen('client ready', () => {
-      // initialize the game by sending the first board state
+      // initialize the game by setting up listeners and sending the first board state
       this.start();
     });
   }
@@ -28,19 +30,20 @@ export default class Game {
   start() {
     // client turn over => client is finished making a move
     this.listen('client turn over', (playerId, { tileId }) => {
-      try {
-        const result = this.logic.addTile(tileId, playerId);
-        if (result.status = 'continue') {
-          this.emit('server turn over', result);
-        } else if (result.status = 'over') {
-          this.emit('game over', result);
-        } else {
-          const err = 'no status found on result. result = ' + result;
-          console.error(err);
-          this.emit('err', { err });
-        }
-      } catch (err) {
-        err = err.toString();
+      const result = this.logic.addTile(tileId, playerId);
+
+      // continue
+      if (result.status = 'continue') {
+        this.emit('server turn over', result);
+
+      // game over
+      } else if (result.status = 'over') {
+        this.emit('game over', result);
+
+      // error
+      } else {
+        const err = 'no status found on result. result = ' + result;
+        console.error(err);
         this.emit('err', { err });
       }
     });

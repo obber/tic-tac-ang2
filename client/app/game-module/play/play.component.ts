@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { SocketService } from '../../shared';
 import { GameService } from '../game.service';
@@ -15,7 +15,7 @@ import { GameService } from '../game.service';
     </div>
   `
 })
-export class PlayComponent implements OnInit, AfterViewInit {
+export class PlayComponent implements OnInit, AfterViewInit, OnDestroy {
   private socket : Observable<any>;
   private sub: Subscription;
 
@@ -26,12 +26,21 @@ export class PlayComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.socket = this.socketService.get('game');
-    this.sub = this.socket.subscribe(resp => console.log(resp));
+    // set up game related listeners
+    this.sub = this.socket.subscribe(resp => {
 
+    });
+    // emit the gameId to connect
+    this.socketService.connectToGame();
   }
 
   ngAfterViewInit() {
+    // console.log('emitting client ready');
+    // this.socketService.emit('client ready');
+  }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

@@ -8,6 +8,7 @@ export class SocketService {
   private name: String;
   private host: String = env.socketUrl;
   private socket: SocketIOClient.Socket;
+  private gameId: String;
 
   constructor() { }
 
@@ -38,6 +39,20 @@ export class SocketService {
         return () => this.socket.close();
       });
     }
+  }
+
+  connectToGame() {
+    this.emit('connect to game', {
+      gameId: this.gameId
+    });
+  }
+
+  setId(gameId) {
+    this.gameId = gameId;
+  }
+
+  emit(event, payload = {}) {
+    this.socket.emit(event, payload);
   }
 
   private connect() {
